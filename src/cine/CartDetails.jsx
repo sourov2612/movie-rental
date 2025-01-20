@@ -3,10 +3,10 @@ import { MovieContext } from "../context";
 import { getImgUrl } from "../utils/cine-utils";
 import Delete from "../assets/delete.svg";
 import Checkout from "../assets/icons/checkout.svg";
+import { toast } from "react-toastify";
 
 export default function CartDetails({ onClose }) {
   const { cartData, setCartData } = useContext(MovieContext);
-  console.log(cartData);
 
   function handleDeleteCart(event, itemId) {
     event.preventDefault();
@@ -16,6 +16,10 @@ export default function CartDetails({ onClose }) {
     });
 
     setCartData([...filteredItem]);
+
+    toast.success(`Romoved item from the cart successfully`, {
+      position: "bottom-right",
+    });
   }
 
   return (
